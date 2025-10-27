@@ -1,0 +1,42 @@
+﻿<Window x:Class="CP1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CP1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Запуск Notepad">
+                <Grid>
+                    <Button Content="Запустить Notepad" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20" />
+                    <Label x:Name="StatusLabel1" Content="Статус: Ожидание" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Загрузка данных">
+                <Grid>
+                    <Button Content="Начать загрузку" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Click="StartLoad_Click"/>
+                    <Button Content="Остановить" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="StopLoad_Click"/>
+                    <ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Height="20" Width="300"  HorizontalAlignment="Center"/>
+                    <Label x:Name="StatusLabel2" Content="Статус: Ожидание" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Синхронизация lock">
+                <Grid>
+                    <Button Content="Запустить потоки" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25"  Click="StartThreadsLock_Click"/>
+                    <Label x:Name="ResultLabelLock" Content="Результат: 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Семафор">
+                <Grid>
+                    <Button Content="Запустить потоки" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Click="StartThreadsSemaphore_Click"/>
+                    <TextBox x:Name="LogTextBox" Margin="20 50 20 20"  VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
