@@ -10,18 +10,14 @@ namespace CP1
 {
     public partial class MainWindow : Window
     {
-        // Для вкладки 1: Запуск внешних процессов
         private Process notepadProcess;
 
-        // Для вкладки 2: Работа с потоками и Dispatcher
         private CancellationTokenSource cancellationTokenSource;
 
-        // Для вкладки 3: Синхронизация через lock
         private int counter = 0;
         private readonly object lockObject = new object();
 
-        // Для вкладки 4: Семафор
-        private SemaphoreSlim semaphore = new SemaphoreSlim(3); // Ограничение в 3
+        private SemaphoreSlim semaphore = new SemaphoreSlim(3); 
         private List<string> sharedCollection = new List<string>();
         private int processedCount = 0;
 
@@ -29,14 +25,12 @@ namespace CP1
         {
             InitializeComponent();
 
-            // Инициализация коллекции для семафора
             for (int i = 1; i <= 10; i++)
             {
                 sharedCollection.Add($"Задача{i}");
             }
         }
 
-        // Вкладка 1: Запуск Notepad
         private void StartNotepad_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -63,7 +57,6 @@ namespace CP1
             });
         }
 
-        // Вкладка 2: Загрузка данных
         private async void StartLoad_Click(object sender, RoutedEventArgs e)
         {
             cancellationTokenSource = new CancellationTokenSource();
@@ -102,7 +95,6 @@ namespace CP1
             });
         }
 
-        // Вкладка 3: Синхронизация lock
         private void StartThreadsLock_Click(object sender, RoutedEventArgs e)
         {
             counter = 0;
@@ -131,7 +123,6 @@ namespace CP1
             }
         }
 
-        // Вкладка 4: Семафор
         private async void StartThreadsSemaphore_Click(object sender, RoutedEventArgs e)
         {
             LogTextBox.Clear();
